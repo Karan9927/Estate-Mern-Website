@@ -9,6 +9,9 @@ import cookieParser from "cookie-parser";
 import path from "path";
 dotenv.config();
 
+const port = process.env.PORT || 5000;
+app.use(bodyParser.urlencoded({ extended: true }));
+
 mongoose
   .connect(
     "mongodb+srv://karan9927:karan992708@mern-estate.vhwxdpa.mongodb.net/?retryWrites=true&w=majority&appName=mern-estate"
@@ -28,8 +31,8 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000!");
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
 
 app.use("/api/user", userRouter);
